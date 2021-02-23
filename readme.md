@@ -38,4 +38,30 @@ The script will take `template.miz` (which I copied from `empty-caucasus.miz`) a
 
 ### Advanced settings
 
-TBD.
+#### Selecting a specific template mission file
+
+By default, the script looks for a `template.miz` file and uses it as the basis for the new mission.
+
+It's possible to specifiy a specific file as the template ; for example : `init.cmd My-cool-and-shiny-mission-Caucasus empty-caucasus.miz`
+
+#### Setting the logging level of the trigger injector
+
+By setting a value to the `LUA_SCRIPTS_DEBUG_PARAMETER` variable, it is possible to tune the logging level of the trigger injector LUA program.
+
+Possible values are :
+- `-debug` : debug level, additional information
+- `-trace` : trace level, everything is written
+
+This is useful to understand why a specific run does not work
+
+#### Setting the location of the 7zip executable
+
+If your 7zip tool is not in your path, you can set its location in the `SEVENZIP` variable. It's a string which should point to the 7za executable (e.g. `c:\tools\7zip\bin\7zip.exe`)
+
+#### Setting the location of the LUA executable
+
+In the same way, you can set its location of the LUA executable in the `LUA` variable. It's a string which should point to the LUA executable (e.g. `c:\tools\lua\bin\lua.exe`)
+
+#### Skip the pauses
+
+If you set the `NOPAUSE` variable to "true", then the pauses in the script will not be marked.

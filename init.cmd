@@ -56,7 +56,11 @@ echo ----------------------------------------
 echo Stop this script now or it will modify this folder !
 echo ----------------------------------------
 echo.
+
+IF [%NOPAUSE%] == [true] GOTO NoPause1
 pause
+:NoPause1
+
 
 echo ----------------------------------------
 
@@ -95,14 +99,11 @@ echo prepare the folders
 rd /s /q .\build >nul 2>&1
 mkdir .\build >nul 2>&1
 
-pause
-
 echo.
 echo Extracting the template mission
 
 "%SEVENZIP%" x -y %MISSION_TEMPLATE% -o".\build\" >nul 2>&1
 
-pause
 
 echo Fetching the veaf-mission-creation-tools package
 call npm update
@@ -114,15 +115,11 @@ pushd node_modules\veaf-mission-creation-tools\src\scripts\veaf >nul 2>&1
 "%LUA%" veafMissionTriggerInjector.lua ..\..\..\..\..\build\ %LUA_SCRIPTS_DEBUG_PARAMETER%
 popd >nul 2>&1
 
-pause
-
 echo.
 echo Rebuilding the mission
 
 "%SEVENZIP%" a -r -tzip %MISSION_NAME%.miz .\build\* -mem=AES256 >nul 2>&1
 copy .\build\%MISSION_NAME%.miz .\ >nul 2>&1
-
-pause
 
 echo.
 echo Cleanup
@@ -130,7 +127,10 @@ echo -------------------------------------------------------
 echo Stop this script now or it will cleanup this folder !
 echo -------------------------------------------------------
 echo.
+
+IF [%NOPAUSE%] == [true] GOTO NoPause2
 pause
+:NoPause2
 
 rd /s /q .\build >nul 2>&1
 del build.cmd-template >nul 2>&1
