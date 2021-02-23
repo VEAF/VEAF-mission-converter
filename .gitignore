@@ -1,5 +1,4 @@
 /build
-/*.miz
 /node_modules/
 /7za.exe
 /setup_*.cmd
