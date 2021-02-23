@@ -1,0 +1,11 @@
+/build
+/*.miz
+/node_modules/
+/7za.exe
+/setup_*.cmd
+package-lock.json
+cache/
+
+configuration.json
+
+build-zip.cmd
