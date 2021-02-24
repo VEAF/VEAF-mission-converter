@@ -95,5 +95,5 @@ If you set the `NOPAUSE` variable to "true", then the pauses in the script will 
 
 ### Use an initialized Mission Folder
 
-![schema](https://user-images.githubusercontent.com/172286/109006613-8c48d280-76ab-11eb-8ea6-de3a88069abb.jpg)
+![schema](https://user-images.githubusercontent.com/172286/109007616-9ddeaa00-76ac-11eb-89ba-370e16810240.jpg)
 
