@@ -5,7 +5,7 @@ set MISSION_TEMPLATE=%2
 IF [%MISSION_NAME%] == [] GOTO NeedMissionName
 goto DontNeedMissionName
 :NeedMissionName
-echo Mission name is needed !
+echo Mission name is needed ! It will be the name of your mission folder and project. It should not contain any space or underscore, and no trailing .miz (it's not a mission file name) !
 echo Usage : init.cmd My-Supercool-Mission [mission_template_file.miz]
 goto :EndOfFile
 :DontNeedMissionName
