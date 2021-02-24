@@ -91,9 +91,9 @@ If you set the `NOPAUSE` variable to "true", then the pauses in the script will 
 
 ### Initialize a new Mission Folder with this tool
 
-![schema](docs\initialize a new Mission Folder.jpg)
+![schema](https://user-images.githubusercontent.com/172286/109006666-9a96ee80-76ab-11eb-871c-a77a1ffa4fd9.jpg)
 
 ### Use an initialized Mission Folder
 
-![schema](docs\use a mission Folder.jpg)
+![schema](https://user-images.githubusercontent.com/172286/109006613-8c48d280-76ab-11eb-8ea6-de3a88069abb.jpg)
 
