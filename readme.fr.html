@@ -1,0 +1,58 @@
+<h2 id="comment-transformer-une-mission-existante">Comment transformer une mission existante ?</h2>
+<h3 id="prérequis">Prérequis</h3>
+<h4 id="installation-manuelle">Installation manuelle</h4>
+<p>Vous aurez besoin de quelques outils installés sur votre PC pour que ces scripts fonctionnent.</p>
+<ul>
+<li>LUA : il vous faudra un interpreter LUA, dans votre PATH, prêt à être appelé avec la commande <code>lua</code></li>
+<li>7zip : il vous faudra 7zip, ou un autre outil de compression ZIP, dans votre PATH, prêt à être appelé avec la commande <code>7zip</code></li>
+<li>Powershell : vous aurez besoin de Powershell, et il faudra le configurer pour qu’il soit autorisé à exécuter des scripts (lire <a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7.1">cet article en anglais</a>) ; dit simplement, vous devez lancer cette commande dans une fenêtre Powershell (en mode administrateur) : <code>Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope LocalMachine</code></li>
+<li>npm : il vous faudra le gestionnaire de modules de NodeJS, NPM, pour récupérer automatiquement les outils de création de mission VEAF ; voir <a href="https://www.npmjs.com/get-npm">ici (en anglais)</a></li>
+</ul>
+<h4 id="installation-avec-chocolatey">Installation avec Chocolatey</h4>
+<p>Ces outils nécessaires peuvent être installés facilement en utilisant <em>Chocolatey</em> (voir <a href="https://chocolatey.org/">ici (en anglais)</a>).</p>
+<p><strong>ATTENTION</strong> : il ne faut surtout pas installer deux fois les outils, avec <em>l’installation manuelle</em> et <em>l’installation par Chocolatey</em> ! C’est <strong>l’un ou l’autre</strong> !</p>
+<p>Pour installer Chocolatey, lancez cette commande dans une fenêtre Powershell (en mode administrateur) : <code>Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))</code></p>
+<p>Une fois que <em>Chocolatey</em> est installé, vous pouvez installer les outils à l’aide de ces simples commandes (dans une fenêtre <em>cmd</em> standard) :</p>
+<ul>
+<li>LUA : <code>choco install -y lua</code></li>
+<li>7zip : <code>choco install -y 7zip.commandline</code></li>
+<li>npm : <code>choco install -y nodejs</code></li>
+</ul>
+<h3 id="choisir-une-mission-comme-point-de-départ">Choisir une mission comme point de départ</h3>
+<p>Vous devez démarrer le processus avec un fichier de mission DCS qui servira de base à votre mission intégrant les scripts VEAF.</p>
+<p>Nous vous fournissons des canevas vierges pour le Caucase (<code>empty-caucasus.miz</code>), la Syrie (<code>empty-syria.miz</code>) et le Golfe Persique (<code>empty-persiangulf.miz</code>).</p>
+<p>Copiez la mission de votre choix dans la racine de ce répertoire, et renommez-la <code>template.miz</code>.</p>
+<h3 id="lancer-le-script-init.cmd">Lancer le script init.cmd</h3>
+<p>Dans une invite de commande <em>cmd</em>, tapez simplement <code>init.cmd</code> suivi du nom de la mission que vous voulez construire (pas d’espace, pas de soulignés - tiret du 8).</p>
+<p>Le nom de la mission sera le nom de votre projet. Il devrait être le même que le nom de ce répertoire (pas obligatoire, mais chaudement recommandé).</p>
+<p>Il ne doit pas comporter d’espace, ni de soulignés (tiret du 8), et ne doit pas se terminer par <code>.miz</code> (ce n’est pas le nom d’un fichier de mission !).</p>
+<h4 id="exemple">Exemple</h4>
+<p>Mettons que je veuille initialiser une nouvelle mission que j’appellerai “La super mission de Zip - Caucase”</p>
+<p>Je commence par remplacer les espaces par des tirets, et retirer les soulignés (aucun ici) : “La-super-mission-de-Zip-Caucase”. Je fais une copie toute neuve de ce répertoire <code>VEAF-mission-directory-template</code> et je le renomme <code>La-super-mission-de-Zip-Caucase</code> (ce que j’appelle “le répertoire de la mission”).</p>
+<p>Comme je veux créer une mission dans le Caucase, et que je n’ai pas de mission à prendre comme base, je vais renommer <code>empty-caucasus.miz</code> en <code>template.miz</code> dans le répertoire de la mission.</p>
+<p>Puis je vais lancer une invite de commande (<code>cmd</code>) et utiliser <code>cd</code> pour aller dans mon répertoire de mission, puis lancer <code>init.cmd La-super-mission-de-Zip-Caucase</code></p>
+<p>Ce script va prendre <code>template.miz</code> (qui est en fait <code>empty-caucasus.miz</code>, que j’ai renommé) comme base, et préparer le répertoire de la mission avec tout ce qu’il faut pour être en mesure de compiler la mission (créer le fichier <code>.miz</code>).</p>
+<h3 id="paramètres-avancés">Paramètres avancés</h3>
+<h4 id="choisir-un-autre-fichier-de-mission-comme-modèle">Choisir un autre fichier de mission comme modèle</h4>
+<p>Par défaut, le script recherche un fichier <code>template.miz</code> et l’utilise comme base pour la nouvelle mission.</p>
+<p>Il est possible de spécifier un autre fichier comme modèle ; par exemple <code>init.cmd La-super-mission-de-Zip-Caucase empty-caucasus.miz</code></p>
+<h4 id="choisir-le-niveau-de-log-dans-linjecteur-de-trigger">Choisir le niveau de log dans l’injecteur de trigger</h4>
+<p>En précisant une valeur dans la variable d’environnement <code>LUA_SCRIPTS_DEBUG_PARAMETER</code>, il est possible de régler le niveau de retour (log) du script LUA chargé d’injecter les triggers.</p>
+<p>Les valeurs possibles sont :</p>
+<ul>
+<li><code>-debug</code> : niveau de débogage, informations supplémentaires</li>
+<li><code>-trace</code> : niveau de traçage, on écrit tout</li>
+</ul>
+<p>C’est utile pour essayer de comprendre quand quelque chose ne fonctionne pas.</p>
+<h4 id="spécifier-lemplacement-de-lexécutable-7zip">Spécifier l’emplacement de l’exécutable 7zip</h4>
+<p>Si l’outil 7zip est installé mais n’est pas dans votre PATH, vous pouvez spécifier son emplacement dans la variable d’environnement <code>SEVENZIP</code>. C’est une chaine qui doit pointer vers l’exécutable <code>7za</code> (par ex: <code>c:\tools\7zip\bin\7zip.exe</code>)</p>
+<h4 id="spécifier-lemplacement-de-lexécutable-lua">Spécifier l’emplacement de l’exécutable LUA</h4>
+<p>De la même manière, vous pouvez spécifier son emplacement dans la variable d’environnement <code>LUA</code>. C’est une chaine qui doit pointer vers l’exécutable <code>lua</code> (par ex: <code>c:\tools\lua\bin\lua.exe</code>)</p>
+<h4 id="ne-pas-marquer-de-pause">Ne pas marquer de pause</h4>
+<p>Si vous précisez la valeur “true” dans la variable d’environnement <code>NOPAUSE</code>, alors les scripts se déroulera sans marquer de pause.</p>
+<h2 id="comment-transformer-une-mission-existante---version-graphique">Comment transformer une mission existante - version graphique</h2>
+<figure>
+<img src="https://user-images.githubusercontent.com/172286/109006666-9a96ee80-76ab-11eb-871c-a77a1ffa4fd9.jpg" alt="schema" /><figcaption aria-hidden="true">schema</figcaption>
+</figure>
+<h2 id="comment-compiler-une-mission">Comment compiler une mission</h2>
+<p>Voir <a href="readme-build.fr.html">ce document</a>.</p>

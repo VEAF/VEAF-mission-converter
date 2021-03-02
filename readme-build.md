@@ -37,7 +37,7 @@ This file will be named after the mission (this is configured in the first line 
 
 ### Editing a compiled mission
 
-After a mission has been compiled, copy it from the `build` folder to the main mission folder. Then, you can open it in the DCS Mission Editor and edit it (add/remove units, add triggers, change zones, etc.).
+After a mission has been compiled, copy it from the `build` folder to the main mission folder (the folder where `extract.cmd` and `build.cmd` are stored). Then, you can open it in the DCS Mission Editor and edit it (add/remove units, add triggers, change zones, etc.).
 
 Also, you can edit the mission source files in parallel (using a text editor, I recommend Notepad++ or Visual Studio Code); specifically, you can edit :
 
@@ -58,7 +58,7 @@ Once a mission has been edited and saved in the DCS mission editor, you need to 
 
 To do this, simply run the `extract.cmd` script. You don't even need to run it in a `cmd` window, double-clicking it will be ok.
 
-This script will take any mission file starting with the mission name (configured in the beginning of the script), in the mission folder (not in the `build` folder), extract its content, process them and store them in `src`.
+This script will take any mission file starting with the mission name (configured in the beginning of the script), in the mission folder (the folder where `extract.cmd` and `build.cmd` are stored, not the `build` folder), extract its content, process them and store them in `src`.
 
 ### Advanced settings
 
