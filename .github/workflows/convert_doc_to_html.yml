@@ -1,0 +1,21 @@
+name: Long Usage
+
+on: push
+
+jobs:
+  convert_via_pandoc:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: docker://pandoc/core:2.9
+        with:
+          args: -f markdown -t html5 -o "readme.html" "readme.md" 
+      - uses: docker://pandoc/core:2.9
+        with:
+          args: -f markdown -t html5 -o "readme.fr.html" "readme.fr.md" 
+      - uses: docker://pandoc/core:2.9
+        with:
+          args: -f markdown -t html5 -o "readme-build.html" "readme-build.md" 
+      - uses: docker://pandoc/core:2.9
+        with:
+          args: -f markdown -t html5 -o "readme-build.fr.html" "readme-build.fr.md" 
+      - run: perl -pi -e 's/\.md/.html/' *.html
