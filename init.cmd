@@ -144,11 +144,14 @@ del "docs\initialize a new Mission Folder.*" >nul 2>&1
 del readme.md >nul 2>&1
 del readme.fr.md >nul 2>&1
 ren readme-build.md readme.md >nul 2>&1
+powershell -File replace.ps1 readme.md "readme-build" "readme" >nul 2>&1
 ren readme-build.fr.md readme.fr.md >nul 2>&1
 del readme.html >nul 2>&1
 del readme.fr.html >nul 2>&1
 ren readme-build.html readme.html >nul 2>&1
+powershell -File replace.ps1 readme.html "readme-build" "readme" >nul 2>&1
 ren readme-build.fr.html readme.fr.html >nul 2>&1
+del init.cmd  >nul 2>&1
 
 echo.
 echo ----------------------------------------
