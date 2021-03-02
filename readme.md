@@ -1,4 +1,4 @@
-Ce document est également disponible [en français](readme.fr-md)
+Ce document est également disponible [en français](readme.fr.md)
 
 ## How to transform an existing mission?
 

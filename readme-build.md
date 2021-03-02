@@ -1,3 +1,4 @@
+Ce document est également disponible [en français](readme-build.fr.md)
 
 ## How to build a mission?
 
