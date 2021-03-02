@@ -14,7 +14,6 @@ IF [%MISSION_TEMPLATE%] == [] GOTO DefineDefaultMissionFile
 goto DontDefineDefaultMissionFile
 :DefineDefaultMissionFile
 set MISSION_TEMPLATE=template.miz
-goto :EndOfFile
 :DontDefineDefaultMissionFile
 echo Using template "%MISSION_TEMPLATE%"
 
