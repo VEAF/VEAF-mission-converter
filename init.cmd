@@ -151,7 +151,6 @@ del readme.fr.html >nul 2>&1
 ren readme-build.html readme.html >nul 2>&1
 powershell -File replace.ps1 readme.html "readme-build" "readme" >nul 2>&1
 ren readme-build.fr.html readme.fr.html >nul 2>&1
-del init.cmd  >nul 2>&1
 
 echo.
 echo ----------------------------------------
@@ -164,3 +163,4 @@ echo.
 IF [%NOPAUSE%] == [true] GOTO EndOfFile
 pause
 :EndOfFile
+del init.cmd  >nul 2>&1
