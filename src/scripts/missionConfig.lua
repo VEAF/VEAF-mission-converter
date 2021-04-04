@@ -2,9 +2,14 @@
 -- Mission configuration file for the VEAF framework
 -- see https://github.com/VEAF/VEAF-Mission-Creation-Tools
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
+veaf.config.MISSION_NAME = nil -- no specific name
+veaf.config.MISSION_EXPORT_PATH = nil -- use default folder
+
+-- play the radio beacons (for the public OT mission)
+veafBeacons = false
 
 -- activate the QRA
---qraMinevody="ready";
+--qraXXXXX="ready";
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- initialize all the scripts
@@ -12,6 +17,15 @@
 if veafRadio then
     veaf.logInfo("init - veafRadio")
     veafRadio.initialize(true)
+
+    if veafBeacons then
+        -- add the beacons
+        -- veafRadio.startBeacon("Bienvenue-blue", 15, 120, "251.0,124.0,121.5,30.0", "am,am,am,fm", nil, "bienvenue-veaf-fr.mp3", 1.0, 2)
+        -- veafRadio.startBeacon("Bienvenue-red", 45, 120, "251.0,124.0,121.5,30.0", "am,am,am,fm", nil, "bienvenue-veaf-fr.mp3", 1.0, 1)
+        -- veafRadio.startBeacon("Welcome-blue", 75, 120, "251.0,124.0,121.5,30.0", "am,am,am,fm", nil, "bienvenue-veaf-en.mp3", 1.0, 2)
+        -- veafRadio.startBeacon("Welcome-red", 105, 120, "251.0,124.0,121.5,30.0", "am,am,am,fm", nil, "bienvenue-veaf-en.mp3", 1.0, 1)
+        -- veafRadio.startBeacon("Batumi", 5, 90, "122.5,131.0", "am,am", nil, "Batumi.mp3", 1.0, 2)
+    end
 end
 if veafSpawn then
     veaf.logInfo("init - veafSpawn")
@@ -188,8 +202,7 @@ end
 -- configure SECURITY
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 if veafSecurity then
-    --let's not set a password
-    --veafSecurity.password_L9["6ade6629f9219d87a011e7b8fbf8ef9584f2786d"] = true -- set the L9 password (the lowest possible security)
+    veafSecurity.password_L9["SHA1 hash of the password"] = true -- set the L9 password (the lowest possible security)
     veafSecurity.logInfo("Loading configuration")
     veaf.logInfo("init - veafSecurity")
     veafSecurity.initialize()
@@ -206,6 +219,7 @@ end
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 if veafCarrierOperations then
     veaf.logInfo("init - veafCarrierOperations")
+    -- the carriers will be automatically found
     veafCarrierOperations.initialize(true)
 end
 
@@ -398,62 +412,19 @@ if ctld then
 
     -- Use any of the predefined names or set your own ones
     ctld.transportPilotNames = {
-
-        "yak #001",
-        "yak #002",
-        "yak #003",
-        "yak #004",
-        "yak #005",
-        "yak #006",
-        "yak #007",
-        "yak #008",
-        "yak #009",
-        "yak #010",
-        "yak #011",
-        "yak #012",
-        "yak #013",
-        "yak #014",
-        "yak #015",
-        "yak #016",
-        "yak #017",
-        "yak #018",
-        "yak #019",
-        "yak #020",
-        "yak #021",
-        "yak #022",
-        "yak #023",
-        "yak #024",
-        "yak #025",
-        "transport #001",
-        "transport #002",
-        "transport #003",
-        "transport #004",
-        "transport #005",
-        "transport #006",
-        "transport #007",
-        "transport #008",
-        "transport #009",
-        "transport #010",
-        "transport #011",
-        "transport #012",
-        "transport #013",
-        "transport #014",
-        "transport #015",
-        "transport #016",
-        "transport #017",
-        "transport #018",
-        "transport #019",
-        "transport #020",
-        "transport #021",
-        "transport #022",
-        "transport #023",
-        "transport #024",
-        "transport #025",
-        "transport #026",
-        "transport #027",
-        "transport #028",
-        "transport #029",
     }
+
+    for i = 1, 24 do
+        table.insert(ctld.transportPilotNames, "yak"..i)
+    end
+
+    for i = 1, 10 do
+        table.insert(ctld.transportPilotNames, "transport"..i)
+    end
+
+    for i = 1, 79 do
+        table.insert(ctld.transportPilotNames, "helicargo"..i)
+    end
 
     -- *************** Optional Extractable GROUPS *****************
 
@@ -692,12 +663,16 @@ end
 if veafSkynet then
     veaf.logInfo("init - veafSkynet")
     veafSkynet.initialize(
-        true, --includeRedInRadio=true
+        false, --includeRedInRadio=true
         false, --debugRed
-        true, --includeBlueInRadio
+        false, --includeBlueInRadio
         false --debugBlue
     )
 end
 
--- example of automatic activation of a combat zone
---veafCombatZone.ActivateZone("combatZone_MaykopDefenses", true)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- initialize veafSanctuary
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+if veafSanctuary then
+    veafSanctuary.initialize()
+end
