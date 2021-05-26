@@ -5,27 +5,12 @@
 veaf.config.MISSION_NAME = nil -- no specific name
 veaf.config.MISSION_EXPORT_PATH = nil -- use default folder
 
--- play the radio beacons (for the public OT mission)
-veafBeacons = false
-
--- activate the QRA
---qraXXXXX="ready";
-
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- initialize all the scripts
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 if veafRadio then
     veaf.logInfo("init - veafRadio")
     veafRadio.initialize(true)
-
-    if veafBeacons then
-        -- add the beacons
-        -- veafRadio.startBeacon("Bienvenue-blue", 15, 120, "251.0,124.0,121.5,30.0", "am,am,am,fm", nil, "bienvenue-veaf-fr.mp3", 1.0, 2)
-        -- veafRadio.startBeacon("Bienvenue-red", 45, 120, "251.0,124.0,121.5,30.0", "am,am,am,fm", nil, "bienvenue-veaf-fr.mp3", 1.0, 1)
-        -- veafRadio.startBeacon("Welcome-blue", 75, 120, "251.0,124.0,121.5,30.0", "am,am,am,fm", nil, "bienvenue-veaf-en.mp3", 1.0, 2)
-        -- veafRadio.startBeacon("Welcome-red", 105, 120, "251.0,124.0,121.5,30.0", "am,am,am,fm", nil, "bienvenue-veaf-en.mp3", 1.0, 1)
-        -- veafRadio.startBeacon("Batumi", 5, 90, "122.5,131.0", "am,am", nil, "Batumi.mp3", 1.0, 2)
-    end
 end
 if veafSpawn then
     veaf.logInfo("init - veafSpawn")
@@ -219,7 +204,6 @@ end
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 if veafCarrierOperations then
     veaf.logInfo("init - veafCarrierOperations")
-    -- the carriers will be automatically found
     veafCarrierOperations.initialize(true)
 end
 
@@ -266,7 +250,7 @@ if ctld then
     -- In future i'd like it to be a FARP but so far that seems impossible...
     -- You can also enable troop Pickup at FOBS
 
-    ctld.cratesRequiredForFOB = 3 -- The amount of crates required to build a FOB. Once built, helis can spawn crates at this outpost to be carried and deployed in another area.
+    ctld.cratesRequiredForFOB = 1 -- The amount of crates required to build a FOB. Once built, helis can spawn crates at this outpost to be carried and deployed in another area.
     -- The large crates can only be loaded and dropped by large aircraft, like the C-130 and listed in ctld.vehicleTransportEnabled
     -- Small FOB crates can be moved by helicopter. The FOB will require ctld.cratesRequiredForFOB larges crates and small crates are 1/3 of a large fob crate
     -- To build the FOB entirely out of small crates you will need ctld.cratesRequiredForFOB * 3
