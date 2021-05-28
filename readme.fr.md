@@ -158,4 +158,4 @@ Si vous précisez la valeur "true" dans la variable d'environnement `NOPAUSE`, a
 
 ## Comment compiler une mission
 
-Voir [ce document](.\readme-build.fr.md).
+Voir [ce document](readme-build.fr.md).

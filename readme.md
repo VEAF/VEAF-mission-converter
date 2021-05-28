@@ -159,4 +159,4 @@ If you set the `NOPAUSE` environment variable to "true", then the pauses in the 
 
 ## How to build a mission
 
-Please see [this document](.\readme-build.md).
+Please see [this document](readme-build.md).
