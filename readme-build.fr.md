@@ -26,6 +26,9 @@ Une fois que *Chocolatey* est installé, vous pouvez installer les outils à l'a
 - 7zip : `choco install -y 7zip.commandline`
 - npm : `choco install -y nodejs`
 
+Vous aurez quand même besoin de configurer Powershell pour qu'il soit autorisé à exécuter des scripts (lire [cet article en anglais](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7.1)) ; dit simplement, vous devez lancer cette commande dans une fenêtre Powershell (en mode administrateur) : `Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope LocalMachine`
+- npm : il vous faudra le gestionnaire de modules de NodeJS, NPM, pour récupérer automatiquement les outils de création de mission VEAF ; voir [ici (en anglais)](https://www.npmjs.com/get-npm)
+
 ### Compiler une mission
 
 C'est facile de compiler une mission à partir des sources ; il suffit de lancer le script `build.cmd`. Vous n'avez même pas besoin de le lancer dans une invite de commande `cmd`, il suffit de double-cliquer dessus.
@@ -74,4 +77,4 @@ Si vous précisez la valeur "true" dans la variable d'environnement `NOPAUSE`, a
 
 ## Comment transformer une mission existante - version graphique
 
-![schema](https://user-images.githubusercontent.com/172286/109006666-9a96ee80-76ab-11eb-871c-a77a1ffa4fd9.jpg)
+![schema](.\docs\build_cycle.jpg)

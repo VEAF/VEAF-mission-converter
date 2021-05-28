@@ -27,6 +27,8 @@ After *Chocolatey* is installed, use these simple commands in a elevated (admin)
 - 7zip : `choco install -y 7zip.commandline`
 - npm : `choco install -y nodejs`
 
+You'll still need to configure Powershell for script execution (read [this article](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7.1)) ; basically you need to run this command in an elevated (admin) Powershell prompt : `Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope LocalMachine`
+
 ### Build the mission
 
 Building the mission from source is easy ; you simply have to run the `build.cmd` script. You don't even need to run it in a `cmd` window, double-clicking it will be ok.
@@ -76,5 +78,5 @@ If you set the `NOPAUSE` environment variable to "true", then the pauses in the 
 
 ## How to use this - graphic version
 
-![schema](https://user-images.githubusercontent.com/172286/109007616-9ddeaa00-76ac-11eb-89ba-370e16810240.jpg)
+![schema](.\docs\build_cycle.jpg)
 

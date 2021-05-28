@@ -7,8 +7,12 @@ goto DontNeedMissionName
 :NeedMissionName
 echo Mission name is needed ! It will be the name of your mission folder and project. It should not contain any space or underscore, and no trailing .miz (it's not a mission file name) !
 echo Usage : init.cmd My-Supercool-Mission [mission_template_file.miz]
+set /p MISSION_NAME=What's the name of your mission (no space, no underscore, no accents) ? 
+IF [%MISSION_NAME%] == [] GOTO NeedMissionName
+goto DontNeedMissionName
 goto :EndOfFile
 :DontNeedMissionName
+echo Mission will be named "%MISSION_NAME%"
 
 IF [%MISSION_TEMPLATE%] == [] GOTO DefineDefaultMissionFile
 goto DontDefineDefaultMissionFile
@@ -156,7 +160,7 @@ echo.
 echo ----------------------------------------
 echo Built %MISSION_NAME%.miz
 echo ----------------------------------------
-echo Please open this mission in the mission editor, save it back and then run `extract.cmd`
+echo Please open this mission in the mission editor, ensure that there is at least one unit of any kind on the map, add a Game Master slot, save it and then run `extract.cmd`
 echo ----------------------------------------
 echo.
 
