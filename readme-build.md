@@ -78,5 +78,5 @@ If you set the `NOPAUSE` environment variable to "true", then the pauses in the 
 
 ## How to use this - graphic version
 
-![schema](.\docs\build_cycle.jpg)
+![schema](https://github.com/VEAF/VEAF-mission-directory-template/raw/master/docs/build_cycle.jpg)
 

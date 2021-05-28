@@ -39,11 +39,11 @@ For example, I use `D:\dev\_VEAF\VEAF-OpenTraining-Caucasus` for the Caucasus Op
 
 Download this repository on GitHub and unpack all the files in your working folder.
 
-![schema](.\docs\download_repository.jpg)
+![schema](https://github.com/VEAF/VEAF-mission-directory-template/raw/master/docs/download_repository.jpg)
 
 It should look like this :
 
-![schema](.\docs\working_folder.jpg)
+![schema](https://github.com/VEAF/VEAF-mission-directory-template/raw/master/docs/working_folder.jpg)
 
 ### Choose a starting mission
 
@@ -89,15 +89,15 @@ So, let's simply do that. Start by opening the newly created mission in DCS Miss
 
 On the main DCS Editor toolbar : 
 
-![schema](.\docs\dcs_toolbar.jpg)
+![schema](https://github.com/VEAF/VEAF-mission-directory-template/raw/master/docs/dcs_toolbar.jpg)
 
 Click on the "game slots" button (1), add at least a blue Game Master
 
-![schema](.\docs\add_game_master.jpg)
+![schema](https://github.com/VEAF/VEAF-mission-directory-template/raw/master/docs/add_game_master.jpg)
 
 Click on the "add ground unit" button (2), add at least a ground unit for each side (blue **and** red)
 
-![schema](.\docs\add_unit.jpg)
+![schema](https://github.com/VEAF/VEAF-mission-directory-template/raw/master/docs/add_unit.jpg)
 
 Save the mission (3)
 
@@ -155,7 +155,7 @@ If you set the `NOPAUSE` environment variable to "true", then the pauses in the 
 
 ### Initialize a new Mission Folder with this tool
 
-![schema](.\docs\initialize.jpg)
+![schema](https://github.com/VEAF/VEAF-mission-directory-template/raw/master/docs/initialize.jpg)
 
 ## How to build a mission
 

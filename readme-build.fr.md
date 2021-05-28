@@ -77,4 +77,4 @@ Si vous précisez la valeur "true" dans la variable d'environnement `NOPAUSE`, a
 
 ## Comment transformer une mission existante - version graphique
 
-![schema](.\docs\build_cycle.jpg)
+![schema](https://github.com/VEAF/VEAF-mission-directory-template/raw/master/docs/build_cycle.jpg)

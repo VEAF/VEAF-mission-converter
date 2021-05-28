@@ -39,11 +39,11 @@ Par exemple, j'utilise `D:\dev\_VEAF\VEAF-OpenTraining-Caucasus` pour la misson 
 
 Téléchargez l'archive de ce repository sur GitHub et dépaquetez tous les fichiers dans votre répertoire de travail. 
 
-![schema](.\docs\download_repository.jpg)
+![schema](https://github.com/VEAF/VEAF-mission-directory-template/raw/master/docs/download_repository.jpg)
 
 Ça doit donner ça :
 
-![schema](.\docs\working_folder.jpg)
+![schema](https://github.com/VEAF/VEAF-mission-directory-template/raw/master/docs/working_folder.jpg)
 
 ### Choisir une mission comme point de départ
 
@@ -89,15 +89,15 @@ Faisons donc ça. Commencez par ouvrir la mission qui vient d'être créée dans
 
 Puis, dans la barre d'outil principale de l'éditeur :
 
-![schema](.\docs\dcs_toolbar.jpg)
+![schema](https://github.com/VEAF/VEAF-mission-directory-template/raw/master/docs/dcs_toolbar.jpg)
 
 Cliquer sur le bouton "game slots" (1), ajouter au moins un Game Master à la coalition bleue.
 
-![schema](.\docs\add_game_master.jpg)
+![schema](https://github.com/VEAF/VEAF-mission-directory-template/raw/master/docs/add_game_master.jpg)
 
 Cliquer sur le bouton "ajouter une unité au sol" (2), ajouter au moins une unité dans chaque camp (bleu **et** rouge).
 
-![schema](.\docs\add_unit.jpg)
+![schema](https://github.com/VEAF/VEAF-mission-directory-template/raw/master/docs/add_unit.jpg)
 
 Sauvegarder la mission (3)
 
@@ -154,7 +154,7 @@ Si vous précisez la valeur "true" dans la variable d'environnement `NOPAUSE`, a
 
 ## Comment transformer une mission existante - version graphique
 
-![schema](.\docs\initialize.jpg)
+![schema](https://github.com/VEAF/VEAF-mission-directory-template/raw/master/docs/initialize.jpg)
 
 ## Comment compiler une mission
 
