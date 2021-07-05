@@ -51,6 +51,37 @@ set LUA=lua
 :DontDefineDefaultLUA
 echo current value is "%LUA%"
 
+echo ----------------------------------------
+echo DYNAMIC_SCRIPTS_PATH (a string) points to folder where the VEAF-mission-creation-tools are located
+echo defaults this folder
+IF ["%DYNAMIC_SCRIPTS_PATH%"] == [""] GOTO DefineDefaultDYNAMIC_SCRIPTS_PATH
+goto DontDefineDefaultDYNAMIC_SCRIPTS_PATH
+:DefineDefaultDYNAMIC_SCRIPTS_PATH
+set DYNAMIC_SCRIPTS_PATH=%~dp0node_modules\veaf-mission-creation-tools\
+set NPM_UPDATE=true
+:DontDefineDefaultDYNAMIC_SCRIPTS_PATH
+echo current value is "%DYNAMIC_SCRIPTS_PATH%"
+
+echo ----------------------------------------
+echo NOPAUSE if set to "true", will not pause at the end of the script (useful to chain calls to this script)
+echo defaults to "false"
+IF [%NOPAUSE%] == [] GOTO DefineDefaultNOPAUSE
+goto DontDefineDefaultNOPAUSE
+:DefineDefaultNOPAUSE
+set NOPAUSE=false
+:DontDefineDefaultNOPAUSE
+echo current value is "%NOPAUSE%"
+
+echo ----------------------------------------
+echo DYNAMIC_MISSION_PATH (a string) points to folder where this mission is located
+echo defaults this folder
+IF ["%DYNAMIC_MISSION_PATH%"] == [""] GOTO DefineDefaultDYNAMIC_MISSION_PATH
+goto DontDefineDefaultDYNAMIC_MISSION_PATH
+:DefineDefaultDYNAMIC_MISSION_PATH
+set DYNAMIC_MISSION_PATH=%~dp0
+:DontDefineDefaultDYNAMIC_MISSION_PATH
+echo current value is "%DYNAMIC_MISSION_PATH%"
+
 echo.
 echo ----------------------------------------
 echo Initializing this folder to contain %MISSION_NAME%
@@ -114,16 +145,22 @@ echo Extracting the template mission
 
 "%SEVENZIP%" x -y %MISSION_TEMPLATE% -o".\build\" >nul 2>&1
 
-
+IF ["%NPM_UPDATE%"] == [""] GOTO DontNPM_UPDATE
 echo Fetching the veaf-mission-creation-tools package
 call npm update
+goto DoNPM_UPDATE
+:DontNPM_UPDATE
+echo skipping npm update
+:DoNPM_UPDATE
 
 echo.
 echo Injecting the triggers
 
-pushd node_modules\veaf-mission-creation-tools\src\scripts\veaf >nul 2>&1
-"%LUA%" veafMissionTriggerInjector.lua ..\..\..\..\..\build\ %LUA_SCRIPTS_DEBUG_PARAMETER%
-popd >nul 2>&1
+echo on
+pushd %DYNAMIC_SCRIPTS_PATH%\src\scripts\veaf
+"%LUA%" veafMissionTriggerInjector.lua %DYNAMIC_MISSION_PATH%\build\ %LUA_SCRIPTS_DEBUG_PARAMETER%
+popd
+echo off
 
 echo.
 echo Rebuilding the mission
@@ -168,7 +205,7 @@ echo.
 echo ----------------------------------------
 echo Built %MISSION_NAME%.miz
 echo ----------------------------------------
-echo Please open this mission in the mission editor, ensure that there is at least one unit of any kind on the map, add a Game Master slot, save it and then run `extract.cmd`
+echo Please open this mission in the mission editor, ensure that there is at least one unit of any kind on the map for each coalition, add a Game Master slot, save it and then run `extract.cmd`
 echo ----------------------------------------
 echo.
 
