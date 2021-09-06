@@ -147,7 +147,11 @@ echo Extracting the template mission
 
 IF ["%NPM_UPDATE%"] == [""] GOTO DontNPM_UPDATE
 echo Fetching the veaf-mission-creation-tools package
-call yarn install
+if exist yarn.lock (
+	call yarn upgrade
+) else (
+	call yarn install
+)
 goto DoNPM_UPDATE
 :DontNPM_UPDATE
 echo skipping npm update
@@ -156,7 +160,6 @@ echo skipping npm update
 echo.
 echo Injecting the triggers
 
-echo on
 pushd %DYNAMIC_SCRIPTS_PATH%\src\scripts\veaf
 "%LUA%" veafMissionTriggerInjector.lua %DYNAMIC_MISSION_PATH%\build\ %LUA_SCRIPTS_DEBUG_PARAMETER%
 popd
@@ -213,3 +216,4 @@ IF [%NOPAUSE%] == [true] GOTO EndOfFile
 pause
 :EndOfFile
 del init.cmd  >nul 2>&1
+del init-dev.cmd  >nul 2>&1
