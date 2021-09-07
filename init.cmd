@@ -215,5 +215,5 @@ echo.
 IF [%NOPAUSE%] == [true] GOTO EndOfFile
 pause
 :EndOfFile
-del init.cmd  >nul 2>&1
 del init-dev.cmd  >nul 2>&1
+del init.cmd  >nul 2>&1
