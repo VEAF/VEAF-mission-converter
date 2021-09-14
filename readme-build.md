@@ -4,20 +4,21 @@ Ce document est également disponible [en français](readme-build.fr.md)
 
 ### Prerequisites
 
-#### Manual installation
-
 You need a few things set up on your PC for these scripts to function.
 
 - LUA : you need a working LUA interpreter, in your PATH, ready to be called with the `lua` command
 - 7zip : you need 7zip, or another zip tool, in your PATH, ready to be called with the `7zip` command
 - Powershell : you need Powershell, and you need it to be configured to allow script execution (read [this article](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7.1)) ; basically you need to run this command in an elevated (admin) Powershell prompt : `Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope LocalMachine`
-- npm : you need the NPM package manager from NodeJS to get the VEAF mission creation tools ; see [here](https://www.npmjs.com/get-npm)
+- nodeJS : you need NodeJS to run the javascript programs in the VEAF mission creation tools ; see [here](https://nodejs.org/en/)
+- yarn : you need the Yarn package manager to fetch and update the VEAF mission creation tools ; see [here](https://yarnpkg.com/)
+
+**WARNING** : do not do both *manual installation* and *Chocolatey installation*
 
 #### Using Chocolatey
 
 The required tools can easily be installed using *Chocolatey* (see [here](https://chocolatey.org/)).
 
-**WARNING** : do not do both *manual installation* and *Chocolatey installation*
+**WARNING** : you cannot both follow the *manual installation* and *Chocolatey installation* procedures, you would install the tools twice !
 
 To install Chocolatey, use this command  in an elevated (admin) Powershell prompt : `Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))`
 
@@ -25,9 +26,16 @@ After *Chocolatey* is installed, use these simple commands in a elevated (admin)
 
 - LUA : `choco install -y lua`
 - 7zip : `choco install -y 7zip.commandline`
-- npm : `choco install -y nodejs`
+- nodeJS : `choco install -y nodejs`
+- yarn : `npm install -g yarn`
 
 You'll still need to configure Powershell for script execution (read [this article](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7.1)) ; basically you need to run this command in an elevated (admin) Powershell prompt : `Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope LocalMachine`
+
+#### Manual installation
+
+If you know what you're doing, or you despise chocolate (who would?) you can install the prerequisite tools manually.
+
+Simply make sure all the tools listed above are functional before moving to the next point.
 
 ### Build the mission
 

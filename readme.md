@@ -1,23 +1,41 @@
 Ce document est également disponible [en français](readme.fr.md)
 
+## What is this all about ?
+
+This toolset (this folder, these `.cmd` scripts and the associated programs in the VEAF Mission Creation Tools) can be used to transform an existing DCS mission (in the standard `.miz` format) into a fully functional workshop, with which you'll be able to edit, build and deploy a DCS mission with the VEAF Mission Creation Tools.
+
+To sum it up :
+
+`my-nice-mission.miz` -> (this folder) -> `my-nice-mission` folder -> `my-nice-mission-VEAF.miz`
+
+This document will guide you in :
+- installing the required tools and programs
+- use this toolset to transform your existing DCS mission into a VEAF workshop folder
+- use your new VEAF workshop folder to edit and deploy your new mission
+
+Please read everything once without doing anything else, and then read it again, processing step after step.
+
+Also, please don't stop before the end. Doing so would result in an unfinished VEAF workshop folder, which would of course be non-functional.
+
 ## How to transform an existing mission?
 
 ### Prerequisites
-
-#### Manual installation
 
 You need a few things set up on your PC for these scripts to function.
 
 - LUA : you need a working LUA interpreter, in your PATH, ready to be called with the `lua` command
 - 7zip : you need 7zip, or another zip tool, in your PATH, ready to be called with the `7zip` command
 - Powershell : you need Powershell, and you need it to be configured to allow script execution (read [this article](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7.1)) ; basically you need to run this command in an elevated (admin) Powershell prompt : `Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope LocalMachine`
-- npm : you need the NPM package manager from NodeJS to get the VEAF mission creation tools ; see [here](https://www.npmjs.com/get-npm)
+- nodeJS : you need NodeJS to run the javascript programs in the VEAF mission creation tools ; see [here](https://nodejs.org/en/)
+- yarn : you need the Yarn package manager to fetch and update the VEAF mission creation tools ; see [here](https://yarnpkg.com/)
+
+**WARNING** : do not do both *manual installation* and *Chocolatey installation*
 
 #### Using Chocolatey
 
 The required tools can easily be installed using *Chocolatey* (see [here](https://chocolatey.org/)).
 
-**WARNING** : do not do both *manual installation* and *Chocolatey installation*
+**WARNING** : you cannot both follow the *manual installation* and *Chocolatey installation* procedures, you would install the tools twice !
 
 To install Chocolatey, use this command  in an elevated (admin) Powershell prompt : `Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))`
 
@@ -25,9 +43,16 @@ After *Chocolatey* is installed, use these simple commands in a elevated (admin)
 
 - LUA : `choco install -y lua`
 - 7zip : `choco install -y 7zip.commandline`
-- npm : `choco install -y nodejs`
+- nodeJS : `choco install -y nodejs`
+- yarn : `npm install -g yarn`
 
 You'll still need to configure Powershell for script execution (read [this article](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7.1)) ; basically you need to run this command in an elevated (admin) Powershell prompt : `Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope LocalMachine`
+
+#### Manual installation
+
+If you know what you're doing, or you despise chocolate (who would?) you can install the prerequisite tools manually.
+
+Simply make sure all the tools listed above are functional before moving to the next point.
 
 ### Create a working directory and install this toolset
 
@@ -52,6 +77,14 @@ You must start with a DCS mission file as the basis of your VEAF scripted missio
 We provided a blank canvas for Caucasus (`empty-caucasus.miz`), Syria (`empty-syria.miz`) and Persian Gulf (`empty-persiangulf.miz`)
 
 Copy the mission of your choice in the root of this folder, and name it `template.miz`.
+
+If you select a mission that already has some scripts and triggers, it's ok as long as it doesn't conflict with the VEAF's own scripts and libraries.
+In doubt, contact me (Zip) on [VEAF Discord's](https://www.veaf.org/discord)
+
+
+If you want to reinject the VEAF scripts and triggers in a mission that already has some version of them, you must simply remove the related triggers (they should be colored) and save the mission (in the DCS Mission Editor) before using it as the starting mission.
+
+Failing to do this will result in a non-functional mission that has too many triggers and will not load correctly.
 
 ### Run the init.cmd script
 
@@ -101,7 +134,7 @@ Click on the "add ground unit" button (2), add at least a ground unit for each s
 
 Save the mission (3)
 
-#### Extract the mission
+#### Extract the mission files and store them safely
 
 The mission is now ready, in a DCS mission file (ending with `.miz`).
 
