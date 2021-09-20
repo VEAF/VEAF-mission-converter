@@ -146,7 +146,7 @@ A la fin de l'exécution, le script se mettra en pause pour que vous puissiez v�
 
 ### Prochaine étape
 
-Maintenant que vous avez un répertoire de travail avec tout ce qu'il faut pour construire et gérer une mission VEAF, vous devriez lire [ce document](.\readme-build.fr.md) qui explique le cycle compilation -> édition -> extraction.
+Maintenant que vous avez un répertoire de travail avec tout ce qu'il faut pour construire et gérer une mission VEAF, vous devriez lire [ce document](readme-build.fr.md) qui explique le cycle compilation -> édition -> extraction.
 
 ### Paramètres avancés
 
