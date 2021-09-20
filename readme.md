@@ -144,7 +144,7 @@ To do that, simply double-click the `extract.cmd` script in the Windows Explorer
 
 ### Next steps
 
-Now that you have a working directory with everything needed to build and maintain a VEAF mission, you should read [this document](.\readme-build.md) to understand the build -> edit -> extract cycle.
+Now that you have a working directory with everything needed to build and maintain a VEAF mission, you should read [this document](readme-build.md) to understand the build -> edit -> extract cycle.
 
 ### Advanced settings
 
