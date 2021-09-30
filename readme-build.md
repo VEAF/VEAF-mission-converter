@@ -1,5 +1,20 @@
 Ce document est également disponible [en français](readme-build.fr.md)
 
+## What is this about ?
+
+VEAF missions are stored as files in the `src` folder, alongside other files used to configure the scripts and tools.
+
+To build the `.miz` file that DCS will load, it has to be *compiled* by running the `build.cmd` script. This process uses the files stored in `src` and the VEAF toolset to generate the `.miz` file.
+
+Then, the mission can be loaded in DCS to be run or edited (and saved) in DCS mission editor.
+**Warning:** once the mission has been saved in the DCS mission editor, it's possible to run it locally for testing, but not to run it on a DCS server (a few things have to be changed).
+
+The edited `.miz` mission file can be transformed back to files in the `src` folder by using the `extract.cmd` file. It will process the first `.miz` file it finds in the mission folder (the same folder where the `extract.cmd` script is stored), with a file name corresponding to the mission configured in this folder.
+
+### Schema
+
+![schema](https://github.com/VEAF/VEAF-mission-directory-template/raw/master/docs/build_cycle.jpg)
+
 ## How to build a mission?
 
 ### Prerequisites
@@ -26,7 +41,7 @@ After *Chocolatey* is installed, use these simple commands in a elevated (admin)
 
 - LUA : `choco install -y lua`
 - 7zip : `choco install -y 7zip.commandline`
-- nodeJS : `choco install -y nodejs`
+- nodeJS : `choco install -y nodejs` ; then close and reopen the elevated (admin) command prompt
 - yarn : `npm install -g yarn`
 
 You'll still need to configure Powershell for script execution (read [this article](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7.1)) ; basically you need to run this command in an elevated (admin) Powershell prompt : `Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope LocalMachine`
@@ -69,6 +84,26 @@ Once a mission has been edited and saved in the DCS mission editor, you need to 
 To do this, simply run the `extract.cmd` script. You don't even need to run it in a `cmd` window, double-clicking it will be ok.
 
 This script will take any mission file starting with the mission name (configured in the beginning of the script), in the mission folder (the folder where `extract.cmd` and `build.cmd` are stored, not the `build` folder), extract its content, process them and store them in `src`.
+
+**Note:** this script can (and will) display errors; some of them are normal, don't be afraid:
+
+- Headers error, due to the fact that DCS is not writing `.miz` file in the standard `zip` format
+
+```
+WARNINGS:
+Headers Error
+```
+
+- Cleanup error on a non existing file
+
+```
+deleting veafTransportMission.lua
+deleting veafUnits.lua
+The system cannot find the file specified.
+The system cannot find the file specified.
+The system cannot find the file specified.
+The system cannot find the file specified.
+```
 
 ### Advanced settings
 

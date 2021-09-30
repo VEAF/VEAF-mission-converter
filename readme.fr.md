@@ -1,7 +1,7 @@
 
 ## Mais à quoi ça rime ?
 
-Cet ensemble d'outils (ce répertoire, les scripts `.cmd` qu'il contient et les programmes associés dans les outils VEAF Mission Creation Tools) peut être utilisé pour transformer une mission DCS existante (dans le format standard `.miz`) en un atelier complètement fonctionnel, avec lequel vous serz capable d'éditer, de construire et de déployer une mission DCS qui exploite les outils VEAF Mission Creation Tools.
+Cet ensemble d'outils (ce répertoire, les scripts `.cmd` qu'il contient et les programmes associés dans les outils VEAF Mission Creation Tools) peut être utilisé pour transformer une mission DCS existante (dans le format standard `.miz`) en un atelier complètement fonctionnel, avec lequel vous serez capable d'éditer, de construire et de déployer une mission DCS qui exploite les outils VEAF Mission Creation Tools.
 
 Pour résumer :
 
@@ -14,7 +14,7 @@ Ce document vous aidera à :
 
 S'il vous plaît, commencez par lire ce document dans son ensemble, sans rien faire d'autre, avant de le relire en effectuant chaque étape.
 
-Aussi, ne vous arrêtez pas avant la fin. Sinon, votre répertoire atelier VEAF serait dans un état non terminé, ce qui ne fonctionnera pas.
+Aussi, ne vous arrêtez pas avant la fin. Sinon, votre répertoire atelier VEAF serait dans un état intermédiaire, ce qui ne fonctionnera pas.
 
 ## Comment transformer une mission existante ?
 
@@ -41,7 +41,7 @@ Une fois que *Chocolatey* est installé, vous pouvez installer les outils à l'a
 
 - LUA : `choco install -y lua`
 - 7zip : `choco install -y 7zip.commandline`
-- nodejs : `choco install -y nodejs`
+- nodejs : `choco install -y nodejs` ; puis fermez et réouvrez la fenêtre *cmd* (en mode administrateur)
 - yarn : `npm install -g yarn`
 
 Vous aurez quand même besoin de configurer Powershell pour qu'il soit autorisé à exécuter des scripts (lire [cet article en anglais](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7.1)) ; dit simplement, vous devez lancer cette commande dans une fenêtre Powershell (en mode administrateur) : `Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope LocalMachine`

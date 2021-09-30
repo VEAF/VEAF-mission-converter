@@ -43,7 +43,7 @@ After *Chocolatey* is installed, use these simple commands in a elevated (admin)
 
 - LUA : `choco install -y lua`
 - 7zip : `choco install -y 7zip.commandline`
-- nodeJS : `choco install -y nodejs`
+- nodeJS : `choco install -y nodejs` ; then close and reopen the elevated (admin) command prompt
 - yarn : `npm install -g yarn`
 
 You'll still need to configure Powershell for script execution (read [this article](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7.1)) ; basically you need to run this command in an elevated (admin) Powershell prompt : `Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope LocalMachine`
