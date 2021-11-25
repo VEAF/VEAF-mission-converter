@@ -45,7 +45,6 @@ Une fois que *Chocolatey* est installé, vous pouvez installer les outils à l'a
 - yarn : `npm install -g yarn`
 
 Vous aurez quand même besoin de configurer Powershell pour qu'il soit autorisé à exécuter des scripts (lire [cet article en anglais](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7.1)) ; dit simplement, vous devez lancer cette commande dans une fenêtre Powershell (en mode administrateur) : `Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope LocalMachine`
-- npm : il vous faudra le gestionnaire de modules de NodeJS, NPM, pour récupérer automatiquement les outils de création de mission VEAF ; voir [ici (en anglais)](https://www.npmjs.com/get-npm)
 
 #### Installation manuelle
 
@@ -143,6 +142,26 @@ Nous devons lancer le script `extract.cmd` afin de stocker en sécurité le cont
 Pour faire ceci, il suffit de double-cliquer sur le fichier `extract.cmd` dans l'explorateur de Windows, et d'attendre qu'il termine son travail.
 
 A la fin de l'exécution, le script se mettra en pause pour que vous puissiez vérifier que tout s'est bien passé et finalement fermer la fenêtre.
+
+**Note:** le script peut (et va) afficher des erreurs, dont certaines sont normales (voire attendues); il ne faut pas s'en inquiéter :
+
+- Erreur de headers, due au fait que DCS sauvegarde les fichiers `.miz` dans un format `zip` particulier
+
+```
+WARNINGS:
+Headers Error
+```
+
+- Erreur de nettoyage d'un fichier qui n'existe pas
+
+```
+deleting veafTransportMission.lua
+deleting veafUnits.lua
+The system cannot find the file specified.
+The system cannot find the file specified.
+The system cannot find the file specified.
+The system cannot find the file specified.
+```
 
 ### Prochaine étape
 
