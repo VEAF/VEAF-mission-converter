@@ -158,13 +158,13 @@ xcopy /s /y /e %DYNAMIC_SCRIPTS_PATH%\src\scripts\* .\build\tempscripts\ >nul 2>
 
 rem -- set the flags in the scripts according to the options
 echo set the flags in the scripts according to the options
-powershell -File replace.ps1 .\build\tempscripts\veaf\veaf.lua "veaf.Development = (true|false)" "veaf.Development = %VERBOSE_LOG_FLAG%" >nul 2>&1
-powershell -File replace.ps1 .\build\tempscripts\veaf\veaf.lua "veaf.SecurityDisabled = (true|false)" "veaf.SecurityDisabled = %SECURITY_DISABLED_FLAG%" >nul 2>&1
+powershell -ExecutionPolicy Bypass -File replace.ps1 .\build\tempscripts\veaf\veaf.lua "veaf.Development = (true|false)" "veaf.Development = %VERBOSE_LOG_FLAG%" >nul 2>&1
+powershell -ExecutionPolicy Bypass -File replace.ps1 .\build\tempscripts\veaf\veaf.lua "veaf.SecurityDisabled = (true|false)" "veaf.SecurityDisabled = %SECURITY_DISABLED_FLAG%" >nul 2>&1
 
 if %VERBOSE_LOG_FLAG%==false (
 	rem -- comment all the trace and debug code
 	echo comment all the trace and debug code
-	FOR %%f IN (.\build\tempscripts\veaf\*.lua) DO powershell -File replace.ps1 %%f "(^\s*)(.*veaf\.loggers.get\(.*\):(trace|debug|marker|cleanupMarkers))" "$1--$2" >nul 2>&1
+	FOR %%f IN (.\build\tempscripts\veaf\*.lua) DO powershell -ExecutionPolicy Bypass -File replace.ps1 %%f "(^\s*)(.*veaf\.loggers.get\(.*\):(trace|debug|marker|cleanupMarkers))" "$1--$2" >nul 2>&1
 )
 
 echo building the mission
@@ -213,19 +213,19 @@ if %DYNAMIC_LOAD_SCRIPTS%==true (
 )
 
 rem -- disable the C130 module requirement
-powershell -File replace.ps1 .\build\tempsrc\mission "\[\"Hercules\"\] = \"Hercules\"," " " >nul 2>&1
+powershell -ExecutionPolicy Bypass -File replace.ps1 .\build\tempsrc\mission "\[\"Hercules\"\] = \"Hercules\"," " " >nul 2>&1
 
 rem -- disable the UH-60L module requirement
-powershell -File replace.ps1 .\build\tempsrc\mission "\[\"UH-60L\"\] = \"UH-60L\"," " " >nul 2>&1
+powershell -ExecutionPolicy Bypass -File replace.ps1 .\build\tempsrc\mission "\[\"UH-60L\"\] = \"UH-60L\"," " " >nul 2>&1
 
 rem -- disable the A-4E-C module requirement
-powershell -File replace.ps1 .\build\tempsrc\mission "\[\"A-4E-C\"\] = \"A-4E-C\"," " " >nul 2>&1
+powershell -ExecutionPolicy Bypass -File replace.ps1 .\build\tempsrc\mission "\[\"A-4E-C\"\] = \"A-4E-C\"," " " >nul 2>&1
 
 rem -- disable the T-45 module requirement
-powershell -File replace.ps1 .\build\tempsrc\mission "\[\"T-45\"\] = \"T-45\"," " " >nul 2>&1
+powershell -ExecutionPolicy Bypass -File replace.ps1 .\build\tempsrc\mission "\[\"T-45\"\] = \"T-45\"," " " >nul 2>&1
 
 rem -- disable the AM2 module requirement
-powershell -File replace.ps1 .\build\tempsrc\mission "\[\"AM2\"\] = \"AM2\"," " " >nul 2>&1
+powershell -ExecutionPolicy Bypass -File replace.ps1 .\build\tempsrc\mission "\[\"AM2\"\] = \"AM2\"," " " >nul 2>&1
 
 rem -- copy the documentation images to the kneeboard
 xcopy /y /e doc\*.jpg .\build\tempsrc\KNEEBOARD\IMAGES\ >nul 2>&1
