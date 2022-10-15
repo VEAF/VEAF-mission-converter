@@ -46,6 +46,9 @@ After *Chocolatey* is installed, use these simple commands in a elevated (admin)
 
 You'll still need to configure Powershell for script execution (read [this article](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7.1)) ; basically you need to run this command in an elevated (admin) Powershell prompt : `Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope LocalMachine`
 
+**WARNING** : if you see a weird error about illegal characters, like in the screenshot below, you may have forgotten to run the Powershell elevation command (just above).
+![schema](https://github.com/VEAF/VEAF-mission-directory-template/raw/master/docs/unknown.jpg)
+
 #### Manual installation
 
 If you know what you're doing, or you despise chocolate (who would?) you can install the prerequisite tools manually.

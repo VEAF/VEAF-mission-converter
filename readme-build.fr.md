@@ -48,6 +48,9 @@ Une fois que *Chocolatey* est installé, vous pouvez installer les outils à l'a
 
 Vous aurez quand même besoin de configurer Powershell pour qu'il soit autorisé à exécuter des scripts (lire [cet article en anglais](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7.1)) ; dit simplement, vous devez lancer cette commande dans une fenêtre Powershell (en mode administrateur) : `Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope LocalMachine`
 
+**ATTENTION** : si vous voyez une erreur bizarre qui parle de "illegal characters", comme dans le screenshot ci-dessous, vous avez sans doite oublié de lancer la commande d'élevation Powershell (juste au dessus).
+![schema](https://github.com/VEAF/VEAF-mission-directory-template/raw/master/docs/unknown.jpg)
+
 #### Installation manuelle
 
 Si vous savez ce que vous faites, ou si vous détestez le chocolat (mais qui déteste le chocolat?), vous pouvez installer les outils requis manuellement.
