@@ -14,7 +14,7 @@ if veaf then
     -- to use the QRA define it below. You can have a look at the following example to get started.
 
     --[[
-    QRA_Minevody = VeafQRA.new()
+    QRA_Minevody = VeafQRA:new()
     :setName("QRA_Minevody")
     :setTriggerZone("QRA_Minevody")
     :setZoneRadius(106680) -- 350,000 feet
@@ -94,7 +94,7 @@ if veafShortcuts then
 
     --[[
      veafShortcuts.AddAlias(
-         VeafAlias.new()
+         VeafAlias:new()
              :setName("-sa11")
              :setDescription("SA-11 Gadfly (9K37 Buk) battery")
              :setVeafCommand("_spawn group, name sa11")
@@ -322,6 +322,16 @@ end
 if veafCarrierOperations then
     veaf.loggers.get(veaf.Id):info("init - veafCarrierOperations")
     veafCarrierOperations.initialize(true)
+end
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- configure CTLD
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+if ctld then
+  veaf.loggers.get(veaf.Id):info("init - ctld for RotorOps")
+  
+  -- do what you have to do in CTLD before it is initialized
+   ctld.initialize(true)
 end
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
