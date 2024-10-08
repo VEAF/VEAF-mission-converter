@@ -132,6 +132,7 @@ echo.
 echo Preparing missionConfig.lua
 echo.
 
+copy src\scripts\veafDynamicConfig.lua-template src\scripts\veafDynamicConfig.lua >nul 2>&1
 copy src\scripts\missionConfig.lua-template src\scripts\missionConfig.lua >nul 2>&1
 powershell -File replace.ps1 src\scripts\missionConfig.lua "##MISSION_NAME##" %MISSION_NAME% >nul 2>&1
 
@@ -187,6 +188,7 @@ del build.cmd-template >nul 2>&1
 del extract.cmd-template >nul 2>&1
 del package.json-template >nul 2>&1
 del weather.cmd-template >nul 2>&1
+del src\scripts\veafDynamicConfig.lua-template >nul 2>&1
 del src\scripts\missionConfig.lua-template >nul 2>&1
 del empty-caucasus.miz >nul 2>&1
 del empty-persiangulf.miz >nul 2>&1
