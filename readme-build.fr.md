@@ -109,6 +109,47 @@ The system cannot find the file specified.
 The system cannot find the file specified.
 ```
 
+### Chargement dynamique des scripts
+Comme mentionné précédemment, le framework de mission permet une transition facile entre les scripts de mission statiques et dynamiques. Le chargement statique doit toujours être utilisé pour la version finale de votre mission, tandis que le mode dynamique offre un moyen rapide et facile de tester et d'ajuster les scripts pendant le processus de développement.
+
+#### Construction en mode dynamique
+Bien qu'il soit possible de modifier manuellement le prédicat du déclencheur `MISSION START (choose - static or dynamic)`, comme expliqué précédemment, une autre méthode consiste à avoir un `build.cmd` personnalisé qui construira la mission en mode dynamique. La boucle d'extraction/construction reste la même, avec la possibilité supplémentaire de construire en mode dynamique ou statique selon la commande de construction utilisée.
+
+Pour ce faire, créez un fichier de commande dans le dossier de mission, à côté de `build.cmd`. Vous pouvez le nommer par exemple `build-dynamic.cmd`.
+```
+set DYNAMIC_LOAD_SCRIPTS=true
+set MISSION_FILE_SUFFIX1=dynamic
+call build.cmd
+```
+- `DYNAMIC_LOAD_SCRIPTS` indiquera à la commande de construire la mission en mode dynamique.
+- `MISSION_FILE_SUFFIX1` est optionnel mais recommandé pour pouvoir identifier les missions dynamiques par leur nom.
+
+#### Chargeur de configuration dynamique
+Dans le dossier `src/scripts`, vous trouverez le fichier suivant : `veafDynamicConfig.lua`. C'est le seul script que le déclencheur `MISSION START (choose - static or dynamic)` exécutera en mode dynamique.
+
+Par défaut, ce script ne chargera et n'exécutera que le script `missionConfig.lua`. Mais si la logique de votre mission le nécessite, vous pouvez le modifier pour charger plus de scripts. Ces scripts supplémentaires peuvent être chargés avant `missionConfig.lua` (pour les dépendances générales qui seront nécessaires aux scripts suivants) ou après (pour la logique de mission qui aura besoin des scripts veaf chargés par `missionConfig.lua`).
+
+Tous les scripts lua supplémentaires devront être présents dans le dossier `src/scripts`.
+Notez que pour avoir ces scripts chargés également en mode statique, vous devrez modifier le `MISSION START (mission config - static)` et ajouter une action pour chaque fichier à charger, dans le bon ordre.
+
+Pour le chargement dynamique, seule la table `scriptsToLoad` devra être modifiée dans `veafDynamicConfig.lua`.
+
+Exemple :
+```
+local scriptsToLoad =
+{
+    -- charger AVANT missionConfig.lua
+    "Moose.lua",
+    "FgTools.lua",
+    "FgWeather.lua",    
+    "FgCsg2.lua",
+    -- missionConfig.lua
+    "missionConfig.lua",
+    -- charger APRÈS missionConfig.lua
+    "FgMission.lua"
+}
+```
+
 ### Paramètres avancés
 
 #### Spécifier l'emplacement de l'exécutable 7zip
@@ -123,3 +164,5 @@ De la même manière, vous pouvez spécifier son emplacement dans la variable d'
 
 Si vous précisez la valeur "true" dans la variable d'environnement `NOPAUSE`, alors les scripts se déroulera sans marquer de pause.
 
+#### Contruction en mode dynamique
+Pour constuire la mission en mode dynamique, positionnez `DYNAMIC_LOAD_SCRIPTS=true`
