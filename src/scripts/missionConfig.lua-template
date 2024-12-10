@@ -88,6 +88,13 @@ if veafTransportMission then
     veafTransportMission.initialize()
     ]]
 end
+if veafWeather then
+    -- uncomment (and adapt) the following lines to enable the Weather module, its commands and its radio menu
+    --[[
+    veaf.loggers.get(veaf.Id):info("init - veafWeather")
+    veafWeather.initialize()
+    ]]
+end
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- change some default parameters
